@@ -362,7 +362,11 @@ const ShopHeroSection = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
-  const [isCollectionsOpen, setIsCollectionsOpen] = useState(false);
+  const [openDropdowns, setOpenDropdowns] = useState({
+    collections: false,
+    men: false,
+    women: false,
+  });
   const productsPerPage = 8;
 
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -381,12 +385,40 @@ const ShopHeroSection = () => {
           (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
         ),
         name: "Men",
+        subcategories: {
+          Accessories: {
+            products: menAccessories.map(
+              (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+            ),
+            name: "Men's Accessories",
+          },
+          Clothing: {
+            products: menClothing.map(
+              (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+            ),
+            name: "Men's Clothing",
+          },
+        },
       },
       Women: {
         products: womenProducts.map(
           (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
         ),
         name: "Women",
+        subcategories: {
+          Accessories: {
+            products: womenAccessories.map(
+              (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+            ),
+            name: "Women's Accessories",
+          },
+          Clothing: {
+            products: womenClothing.map(
+              (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+            ),
+            name: "Women's Clothing",
+          },
+        },
       },
     },
     Collections: {
@@ -474,8 +506,11 @@ const ShopHeroSection = () => {
     }
   }, [showWishlistAlert]);
 
-  const toggleCollections = () => {
-    setIsCollectionsOpen(!isCollectionsOpen);
+  const toggleDropdown = (dropdown) => {
+    setOpenDropdowns((prev) => ({
+      ...prev,
+      [dropdown]: !prev[dropdown],
+    }));
   };
 
   const handleFilter = (products, filterName) => {
@@ -491,7 +526,11 @@ const ShopHeroSection = () => {
   const clearFilters = () => {
     setFilteredProducts(enhancedProducts);
     setActiveFilter("All Products");
-    setIsCollectionsOpen(false);
+    setOpenDropdowns({
+      collections: false,
+      men: false,
+      women: false,
+    });
     setPriceRange([0, 500]);
     setSearchQuery("");
     navigate("/Shop");
@@ -519,9 +558,104 @@ const ShopHeroSection = () => {
     for (const [category, items] of Object.entries(categories)) {
       for (const [itemName, itemData] of Object.entries(items)) {
         if (itemData.name === filterName) return itemData;
+        if (itemData.subcategories) {
+          for (const [subName, subData] of Object.entries(
+            itemData.subcategories
+          )) {
+            if (subData.name === filterName) return subData;
+          }
+        }
       }
     }
     return null;
+  };
+
+  const renderCategoryItems = (items, parentId = "") => {
+    return Object.entries(items).map(([itemName, itemData]) => {
+      const itemId = `${parentId}-${itemName}`
+        .toLowerCase()
+        .replace(/\s+/g, "-");
+
+      const isDropdownCategory =
+        itemName === "Collections" ||
+        itemName === "Men" ||
+        itemName === "Women";
+
+      return (
+        <div key={itemId} className="mb-1">
+          <div
+            className={`flex justify-between items-center py-2 px-3 rounded-lg cursor-pointer transition-colors ${
+              activeFilter === itemData.name
+                ? "bg-gray-800 text-white"
+                : "hover:bg-gray-800/50 text-gray-300"
+            }`}
+            onClick={() => {
+              if (isDropdownCategory) {
+                toggleDropdown(itemName.toLowerCase());
+              } else if (itemData.products) {
+                handleFilter(itemData.products, itemData.name);
+              }
+            }}
+          >
+            <span className="text-sm">{itemName}</span>
+            {isDropdownCategory && (
+              <FontAwesomeIcon
+                icon={faChevronDown}
+                className={`text-xs transition-transform ${
+                  openDropdowns[itemName.toLowerCase()] ? "rotate-180" : ""
+                }`}
+              />
+            )}
+          </div>
+
+          {isDropdownCategory && openDropdowns[itemName.toLowerCase()] && (
+            <div className="pl-4 mt-1 space-y-1">
+              {itemData.subcategories
+                ? Object.entries(itemData.subcategories).map(
+                    ([subItemName, subItemData]) => (
+                      <div
+                        key={subItemName}
+                        className={`py-2 px-3 rounded-lg cursor-pointer transition-colors ${
+                          activeFilter === subItemData.name
+                            ? "bg-gray-800 text-white"
+                            : "hover:bg-gray-800/50 text-gray-300"
+                        } text-sm`}
+                        onClick={() =>
+                          handleFilter(subItemData.products, subItemData.name)
+                        }
+                      >
+                        {subItemName}
+                      </div>
+                    )
+                  )
+                : Object.entries(itemData).map(
+                    ([collectionName, collectionData]) => {
+                      if (collectionName === "name") return null;
+                      return (
+                        <div
+                          key={collectionName}
+                          className={`py-2 px-3 rounded-lg cursor-pointer transition-colors ${
+                            activeFilter === collectionData.name
+                              ? "bg-gray-800 text-white"
+                              : "hover:bg-gray-800/50 text-gray-300"
+                          } text-sm`}
+                          onClick={() =>
+                            handleFilter(
+                              collectionData.products,
+                              collectionData.name
+                            )
+                          }
+                        >
+                          {collectionName}
+                        </div>
+                      );
+                    }
+                  )}
+            </div>
+          )}
+        </div>
+      );
+    });
   };
 
   const Pagination = () => {
@@ -735,65 +869,7 @@ const ShopHeroSection = () => {
                   {category}
                 </h3>
                 <div className="space-y-1">
-                  {Object.entries(items).map(([itemName, itemData]) => {
-                    const isCollections = itemName === "Collections";
-                    return (
-                      <div key={itemName} className="mb-1">
-                        <div
-                          className={`flex justify-between items-center py-2 px-3 rounded-lg cursor-pointer transition-colors ${
-                            activeFilter === itemData.name
-                              ? "bg-gray-800 text-white"
-                              : "hover:bg-gray-800/50 text-gray-300"
-                          }`}
-                          onClick={() => {
-                            if (isCollections) {
-                              toggleCollections();
-                            } else {
-                              handleFilter(itemData.products, itemData.name);
-                            }
-                          }}
-                        >
-                          <span className="text-sm">{itemName}</span>
-                          {isCollections && (
-                            <FontAwesomeIcon
-                              icon={faChevronDown}
-                              className={`text-xs transition-transform ${
-                                isCollectionsOpen ? "rotate-180" : ""
-                              }`}
-                            />
-                          )}
-                        </div>
-
-                        {isCollections && isCollectionsOpen && (
-                          <div className="pl-4 mt-1 space-y-1">
-                            {Object.entries(itemData).map(
-                              ([collectionName, collectionData]) => {
-                                if (collectionName === "name") return null;
-                                return (
-                                  <div
-                                    key={collectionName}
-                                    className={`py-2 px-3 rounded-lg cursor-pointer transition-colors ${
-                                      activeFilter === collectionData.name
-                                        ? "bg-gray-800 text-white"
-                                        : "hover:bg-gray-800/50 text-gray-300"
-                                    } text-sm`}
-                                    onClick={() =>
-                                      handleFilter(
-                                        collectionData.products,
-                                        collectionData.name
-                                      )
-                                    }
-                                  >
-                                    {collectionName}
-                                  </div>
-                                );
-                              }
-                            )}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
+                  {renderCategoryItems(items, categoryId)}
                 </div>
               </div>
             );
