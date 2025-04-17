@@ -366,6 +366,10 @@ const ShopHeroSection = () => {
     collections: false,
     men: false,
     women: false,
+    "men-accessories": false,
+    "men-clothing": false,
+    "women-accessories": false,
+    "women-clothing": false,
   });
   const productsPerPage = 8;
 
@@ -391,12 +395,106 @@ const ShopHeroSection = () => {
               (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
             ),
             name: "Men's Accessories",
+            subcategories: {
+              Belts: {
+                products: menBelts.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Men's Belts",
+              },
+              "Gifts for him": {
+                products: menGiftsForHim.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Gifts for Him",
+              },
+              Jewelry: {
+                products: menJewelry.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Men's Jewelry",
+              },
+              "Pocket Squares": {
+                products: menPocketSquares.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Pocket Squares",
+              },
+              Ties: {
+                products: menTies.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Men's Ties",
+              },
+              "Bow Ties": {
+                products: menBowTies.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Bow Ties",
+              },
+            },
           },
           Clothing: {
             products: menClothing.map(
               (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
             ),
             name: "Men's Clothing",
+            subcategories: {
+              Suits: {
+                products: menSuits.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Men's Suits",
+              },
+              Jeans: {
+                products: menJeans.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Men's Jeans",
+              },
+              Pants: {
+                products: menPants.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Men's Pants",
+              },
+              Polos: {
+                products: menPolos.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Men's Polos",
+              },
+              Shirts: {
+                products: menShirts.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Men's Shirts",
+              },
+              "Sweatshirts & Hoodies": {
+                products: menSweatshirts.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Men's Sweatshirts",
+              },
+              "T-Shirts": {
+                products: menTShirts.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Men's T-Shirts",
+              },
+              Tuxedos: {
+                products: menTuxedos.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Men's Tuxedos",
+              },
+              Waistcoats: {
+                products: menWaistcoats.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Waistcoats",
+              },
+            },
           },
         },
       },
@@ -411,12 +509,112 @@ const ShopHeroSection = () => {
               (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
             ),
             name: "Women's Accessories",
+            subcategories: {
+              Eyewear: {
+                products: womenEyewear.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Women's Eyewear",
+              },
+              Gifts: {
+                products: womenGifts.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Women's Gifts",
+              },
+              "Hats & Scarves": {
+                products: womenHats.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Hats & Scarves",
+              },
+              Hosiery: {
+                products: womenHosiery.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Hosiery",
+              },
+              Jewellery: {
+                products: womenJewellery.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Jewellery",
+              },
+            },
           },
           Clothing: {
             products: womenClothing.map(
               (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
             ),
             name: "Women's Clothing",
+            subcategories: {
+              Suits: {
+                products: womenSuits.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Women's Suits",
+              },
+              Dresses: {
+                products: womenDresses.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Dresses",
+              },
+              Denim: {
+                products: womenDenim.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Women's Denim",
+              },
+              Gowns: {
+                products: womenGowns.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Gowns",
+              },
+              "Jackets & Coats": {
+                products: womenJackets.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Jackets & Coats",
+              },
+              Knitwear: {
+                products: womenKnitwear.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Knitwear",
+              },
+              "Shirts & Tops": {
+                products: womenShirts.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Shirts & Tops",
+              },
+              Skirts: {
+                products: womenSkirts.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Skirts",
+              },
+              "T-Shirts & Sweatshirts": {
+                products: womenSweatshirts.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "T-Shirts & Sweatshirts",
+              },
+              Tailoring: {
+                products: womenTailoring.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Tailoring",
+              },
+              Trousers: {
+                products: womenTrousers.map(
+                  (p) => enhancedProducts.find((ep) => ep.id === p.id) || p
+                ),
+                name: "Trousers",
+              },
+            },
           },
         },
       },
@@ -530,6 +728,10 @@ const ShopHeroSection = () => {
       collections: false,
       men: false,
       women: false,
+      "men-accessories": false,
+      "men-clothing": false,
+      "women-accessories": false,
+      "women-clothing": false,
     });
     setPriceRange([0, 500]);
     setSearchQuery("");
@@ -563,6 +765,13 @@ const ShopHeroSection = () => {
             itemData.subcategories
           )) {
             if (subData.name === filterName) return subData;
+            if (subData.subcategories) {
+              for (const [subSubName, subSubData] of Object.entries(
+                subData.subcategories
+              )) {
+                if (subSubData.name === filterName) return subSubData;
+              }
+            }
           }
         }
       }
@@ -576,10 +785,10 @@ const ShopHeroSection = () => {
         .toLowerCase()
         .replace(/\s+/g, "-");
 
+      // Determine if this is a dropdown category
       const isDropdownCategory =
-        itemName === "Collections" ||
-        itemName === "Men" ||
-        itemName === "Women";
+        itemData.subcategories ||
+        (parentId.includes("collections") && itemName !== "name");
 
       return (
         <div key={itemId} className="mb-1">
@@ -591,7 +800,7 @@ const ShopHeroSection = () => {
             }`}
             onClick={() => {
               if (isDropdownCategory) {
-                toggleDropdown(itemName.toLowerCase());
+                toggleDropdown(itemId);
               } else if (itemData.products) {
                 handleFilter(itemData.products, itemData.name);
               }
@@ -602,17 +811,19 @@ const ShopHeroSection = () => {
               <FontAwesomeIcon
                 icon={faChevronDown}
                 className={`text-xs transition-transform ${
-                  openDropdowns[itemName.toLowerCase()] ? "rotate-180" : ""
+                  openDropdowns[itemId] ? "rotate-180" : ""
                 }`}
               />
             )}
           </div>
 
-          {isDropdownCategory && openDropdowns[itemName.toLowerCase()] && (
+          {isDropdownCategory && openDropdowns[itemId] && (
             <div className="pl-4 mt-1 space-y-1">
               {itemData.subcategories
-                ? Object.entries(itemData.subcategories).map(
-                    ([subItemName, subItemData]) => (
+                ? renderCategoryItems(itemData.subcategories, itemId)
+                : Object.entries(itemData).map(([subItemName, subItemData]) => {
+                    if (subItemName === "name") return null;
+                    return (
                       <div
                         key={subItemName}
                         className={`py-2 px-3 rounded-lg cursor-pointer transition-colors ${
@@ -626,31 +837,8 @@ const ShopHeroSection = () => {
                       >
                         {subItemName}
                       </div>
-                    )
-                  )
-                : Object.entries(itemData).map(
-                    ([collectionName, collectionData]) => {
-                      if (collectionName === "name") return null;
-                      return (
-                        <div
-                          key={collectionName}
-                          className={`py-2 px-3 rounded-lg cursor-pointer transition-colors ${
-                            activeFilter === collectionData.name
-                              ? "bg-gray-800 text-white"
-                              : "hover:bg-gray-800/50 text-gray-300"
-                          } text-sm`}
-                          onClick={() =>
-                            handleFilter(
-                              collectionData.products,
-                              collectionData.name
-                            )
-                          }
-                        >
-                          {collectionName}
-                        </div>
-                      );
-                    }
-                  )}
+                    );
+                  })}
             </div>
           )}
         </div>
