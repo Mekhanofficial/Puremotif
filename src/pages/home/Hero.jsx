@@ -630,7 +630,7 @@ const HomeHeroSection = () => {
   return (
     <>
       <section className="overflow-x-hidden ">
-        <div className="w-full h-screen bg-gray-100 -mt-16 relative overflow-hidden">
+        <div className="w-full h-screen bg-gray-100 pt- relative overflow-hidden">
           <AnimatePresence>
             {slides.map((slide, index) =>
               index === currentSlide ? (
@@ -1461,7 +1461,7 @@ const HomeHeroSection = () => {
             </motion.button>
           </div>
         </motion.div>
-         <div className="bg-zinc-950 text-white py-[120px]">
+        <div className="bg-zinc-950 text-white py-[120px]">
           <div className="text-center mx-[70px]">
             {/* Section Heading */}
             <motion.h1
@@ -1571,7 +1571,6 @@ const HomeHeroSection = () => {
             ))}
           </motion.div>
         </motion.div>
-       
       </section>
     </>
   );

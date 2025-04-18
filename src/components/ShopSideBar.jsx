@@ -13,17 +13,26 @@ const ShopSidebar = ({
   isMobileSidebarOpen,
   setIsMobileSidebarOpen,
 }) => {
+  const shouldShowDropdown = (itemId, itemName, parentId) => {
+    // Only show dropdown for these specific categories
+    const dropdownCategories = ["men", "women", "accessories", "clothing"];
+    return dropdownCategories.some(
+      (cat) =>
+        itemId.includes(cat) ||
+        itemName.toLowerCase().includes(cat) ||
+        (parentId && parentId.includes(cat))
+    );
+  };
+
   const renderCategoryItems = (items, parentId = "") => {
     return Object.entries(items).map(([itemName, itemData]) => {
       const itemId = `${parentId}-${itemName}`
         .toLowerCase()
         .replace(/\s+/g, "-");
 
-      const isDropdownCategory =
-        itemData.subcategories ||
-        (parentId !== "collections" && itemName !== "name");
-
-      const showChevron = isDropdownCategory && parentId !== "collections"; // Hide chevron for COLLECTIONS
+      const showDropdown =
+        shouldShowDropdown(itemId, itemName, parentId) &&
+        itemData.subcategories;
 
       return (
         <div key={itemId} className="mb-1">
@@ -34,7 +43,7 @@ const ShopSidebar = ({
                 : "hover:bg-gray-800/50 text-gray-300"
             }`}
             onClick={() => {
-              if (isDropdownCategory) {
+              if (showDropdown) {
                 toggleDropdown(itemId);
               } else if (itemData.products) {
                 handleFilter(itemData.products, itemData.name);
@@ -42,7 +51,7 @@ const ShopSidebar = ({
             }}
           >
             <span className="text-sm">{itemName}</span>
-            {showChevron && (
+            {showDropdown && (
               <FontAwesomeIcon
                 icon={faChevronDown}
                 className={`text-xs transition-transform ${
@@ -52,28 +61,10 @@ const ShopSidebar = ({
             )}
           </div>
 
-          {isDropdownCategory && openDropdowns[itemId] && (
+          {showDropdown && openDropdowns[itemId] && (
             <div className="pl-4 mt-1 space-y-1">
-              {itemData.subcategories
-                ? renderCategoryItems(itemData.subcategories, itemId)
-                : Object.entries(itemData).map(([subItemName, subItemData]) => {
-                    if (subItemName === "name") return null;
-                    return (
-                      <div
-                        key={subItemName}
-                        className={`py-2 px-3 rounded-lg cursor-pointer transition-colors ${
-                          activeFilter === subItemData.name
-                            ? "bg-gray-800 text-white"
-                            : "hover:bg-gray-800/50 text-gray-300"
-                        } text-sm`}
-                        onClick={() =>
-                          handleFilter(subItemData.products, subItemData.name)
-                        }
-                      >
-                        {subItemName}
-                      </div>
-                    );
-                  })}
+              {itemData.subcategories &&
+                renderCategoryItems(itemData.subcategories, itemId)}
             </div>
           )}
         </div>
@@ -83,7 +74,7 @@ const ShopSidebar = ({
 
   return (
     <div
-      className={`w-full md:w-64 bg-gradient-to-b from-gray-900 to-gray-800 p-6 border-r border-gray-700 overflow-y-auto transition-all duration-300 fixed md:sticky top-0 bottom-0 z-40 ${
+      className={`shop-sidebar w-full md:w-64 bg-gradient-to-b from-gray-900 to-gray-800 p-6 border-r border-gray-700 overflow-y-auto transition-all duration-300 fixed md:sticky top-0 bottom-0 z-40 ${
         isMobileSidebarOpen ? "left-0" : "-left-full md:left-0"
       }`}
       style={{ maxHeight: "100vh" }}
