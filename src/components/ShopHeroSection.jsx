@@ -595,7 +595,7 @@ const getEnhancedCategoryProducts = (products) => {
       {/* Mobile Sidebar Toggle */}
       <button
         onClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
-        className={`mobile-sidebar-toggle md:hidden fixed top-28 left-4 bg-gray-900 text-white p-3 rounded-lg shadow-lg z-30 transition-all duration-300 ${
+        className={`mobile-sidebar-toggle md:hidden fixed top-20 z-50 left-4 bg-gray-900 text-white p-3 rounded-lg shadow-lg  transition-all duration-300 ${
           isScrolled ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
         }`}
       >
