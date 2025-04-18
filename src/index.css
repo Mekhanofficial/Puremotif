@@ -2,6 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Apply Inter font globally */
+body {
+  font-family: 'Inter', sans-serif; /* Smooth, modern sans-serif font */
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Apply to all headings (h1, h2, etc.) */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600; /* Medium to bold weight */
+}
+
+
+
+/* Links */
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+
   @keyframes fade-in {
           from {
             opacity: 0;
