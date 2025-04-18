@@ -740,111 +740,7 @@ const HomeHeroSection = () => {
             </button>
           </div>
         </div>
-        <div className="bg-zinc-950 text-white py-[120px]">
-          <div className="text-center mx-[70px]">
-            {/* Section Heading */}
-            <motion.h1
-              className="text-2xl font-semibold"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-            >
-              Our Featured Products
-            </motion.h1>
-            <hr className="w-[70px] h-[3px] mx-auto my-5 bg-[#16bb7c] border-none" />
 
-            {/* Product Slider */}
-            <Slider {...settings}>
-              {popularItems.map((item, index) => (
-                <motion.div
-                  key={index}
-                  className="px-2"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="relative overflow-hidden rounded-lg shadow-md transition-transform hover:scale-105">
-                    <img
-                      className="w-full h-[350px] object-cover"
-                      src={item.src}
-                      alt={item.name}
-                    />
-                    {/* Hover Overlay Button */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 bg-black bg-opacity-50 transition-opacity duration-300">
-                      <button className="bg-white text-black px-6 py-2 rounded-full font-semibold hover:bg-[#16bb7c] hover:text-white transition-all duration-300">
-                        Quick View
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Product Details */}
-                  <div className="mt-4 text-left">
-                    <h3 className="text-base font-medium">{item.name}</h3>
-                    <div className="flex items-center mt-1">
-                      {Array.from({ length: totalStars }, (_, index) => (
-                        <FontAwesomeIcon
-                          key={index}
-                          className="text-yellow-500 text-base"
-                          icon={faStar}
-                        />
-                      ))}
-                    </div>
-                    <h2 className="text-base mt-1 text-gray-300 font-semibold">
-                      {item.price}
-                    </h2>
-                  </div>
-                </motion.div>
-              ))}
-            </Slider>
-          </div>
-        </div>
-        <div className="relative w-full h-[800px] sm:h-[1000px] bg-zinc-950">
-          {/* Background */}
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-scroll lg:bg-fixed opacity-30"
-            style={{ backgroundImage: `url(${px20})` }}
-          ></div>
-          <div className="absolute inset-0 bg-black/30"></div>
-
-          {/* Foreground Content */}
-          <div className="absolute inset-0 flex flex-col justify-center items-center lg:items-end p-4 space-y-6 lg:pr-12 xl:pr-24">
-            {/* Image */}
-            <motion.div
-              className="w-[300px] h-[350px] sm:w-[350px] sm:h-[400px] md:w-[400px] md:h-[450px] lg:w-[350px] lg:h-[400px] xl:w-[450px] xl:h-[550px]"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-            >
-              <img
-                src={px18}
-                alt="Collection"
-                className="w-full h-full object-cover shadow-2xl"
-              />
-            </motion.div>
-
-            {/* Text */}
-            <motion.div
-              className="text-white max-w-[90%] lg:max-w-[600px] text-center"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-            >
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-semibold mb-6">
-                Explore Our Exquisite <br />
-                <span className="text-[#16bb7c]">Bag Collection</span>
-              </h1>
-              <button className="px-8 py-3.5 text-sm md:text-base border border-gray-300 text-white font-bold uppercase tracking-wide hover:text-[#16bb7c]">
-                <a href="#" className="no-underline">
-                  VIEW COLLECTION
-                </a>
-              </button>
-            </motion.div>
-          </div>
-        </div>
         <motion.div
           className="max-w-7xl mx-auto px-5 py-12 font-sans"
           initial={{ opacity: 0, y: 30 }}
@@ -1013,6 +909,52 @@ const HomeHeroSection = () => {
             ))}
           </motion.div>
         </motion.div>
+
+        <div className="relative w-full h-[800px] sm:h-[1000px] bg-zinc-950">
+          {/* Background */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-scroll lg:bg-fixed opacity-30"
+            style={{ backgroundImage: `url(${px20})` }}
+          ></div>
+          <div className="absolute inset-0 bg-black/30"></div>
+
+          {/* Foreground Content */}
+          <div className="absolute inset-0 flex flex-col justify-center items-center lg:items-end p-4 space-y-6 lg:pr-12 xl:pr-24">
+            {/* Image */}
+            <motion.div
+              className="w-[300px] h-[350px] sm:w-[350px] sm:h-[400px] md:w-[400px] md:h-[450px] lg:w-[350px] lg:h-[400px] xl:w-[450px] xl:h-[550px]"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+            >
+              <img
+                src={px18}
+                alt="Collection"
+                className="w-full h-full object-cover shadow-2xl"
+              />
+            </motion.div>
+
+            {/* Text */}
+            <motion.div
+              className="text-white max-w-[90%] lg:max-w-[600px] text-center"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+            >
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-semibold mb-6">
+                Explore Our Exquisite <br />
+                <span className="text-[#16bb7c]">Bag Collection</span>
+              </h1>
+              <button className="px-8 py-3.5 text-sm md:text-base border border-gray-300 text-white font-bold uppercase tracking-wide hover:text-[#16bb7c]">
+                <a href="#" className="no-underline">
+                  VIEW COLLECTION
+                </a>
+              </button>
+            </motion.div>
+          </div>
+        </div>
 
         <motion.div
           className="flex flex-col lg:flex-row items-center justify-center"
@@ -1519,6 +1461,66 @@ const HomeHeroSection = () => {
             </motion.button>
           </div>
         </motion.div>
+         <div className="bg-zinc-950 text-white py-[120px]">
+          <div className="text-center mx-[70px]">
+            {/* Section Heading */}
+            <motion.h1
+              className="text-2xl font-semibold"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+            >
+              Our Featured Products
+            </motion.h1>
+            <hr className="w-[70px] h-[3px] mx-auto my-5 bg-[#16bb7c] border-none" />
+
+            {/* Product Slider */}
+            <Slider {...settings}>
+              {popularItems.map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="px-2"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="relative overflow-hidden rounded-lg shadow-md transition-transform hover:scale-105">
+                    <img
+                      className="w-full h-[350px] object-cover"
+                      src={item.src}
+                      alt={item.name}
+                    />
+                    {/* Hover Overlay Button */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 bg-black bg-opacity-50 transition-opacity duration-300">
+                      <button className="bg-white text-black px-6 py-2 rounded-full font-semibold hover:bg-[#16bb7c] hover:text-white transition-all duration-300">
+                        Quick View
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Product Details */}
+                  <div className="mt-4 text-left">
+                    <h3 className="text-base font-medium">{item.name}</h3>
+                    <div className="flex items-center mt-1">
+                      {Array.from({ length: totalStars }, (_, index) => (
+                        <FontAwesomeIcon
+                          key={index}
+                          className="text-yellow-500 text-base"
+                          icon={faStar}
+                        />
+                      ))}
+                    </div>
+                    <h2 className="text-base mt-1 text-gray-300 font-semibold">
+                      {item.price}
+                    </h2>
+                  </div>
+                </motion.div>
+              ))}
+            </Slider>
+          </div>
+        </div>
         <motion.div
           className="my-20"
           initial={{ opacity: 0 }}
@@ -1569,6 +1571,7 @@ const HomeHeroSection = () => {
             ))}
           </motion.div>
         </motion.div>
+       
       </section>
     </>
   );

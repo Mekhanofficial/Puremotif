@@ -1,56 +1,94 @@
-import React from "react";
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
+import ProductModal from "./ProductModal";
 
-// ProductCard component (replace the existing one)
-const ProductCard = ({ product }) => {
-  // WhatsApp number (replace with your actual number)
-  const whatsappNumber = "1234567890"; // Example: "1234567890" (no spaces or special chars)
-  
-  // Create WhatsApp message
-  const message = encodeURIComponent(
-    `Hi! I'm interested in ordering:\n\n*${product.name}*\nPrice: $${product.price.toFixed(2)}\n\nCan you help me with this order?`
-  );
-  
-  // Generate WhatsApp link
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
+const ProductCard = ({ product, addToWishlist, isWishlisted }) => {
+  const [showModal, setShowModal] = useState(false);
+
+  const renderStars = (rating) => {
+    const stars = [];
+    const fullStars = Math.floor(rating);
+    for (let i = 0; i < 5; i++) {
+      stars.push(
+        <FontAwesomeIcon
+          key={i}
+          icon={faStar}
+          className={`text-sm ${
+            i < fullStars ? "text-yellow-400" : "text-gray-300"
+          }`}
+        />
+      );
+    }
+    return stars;
+  };
 
   return (
-    <div className="bg-white rounded-lg shadow overflow-hidden hover:shadow-md transition-shadow duration-300">
-      <div className="bg-gray-100 h-64 flex items-center justify-center overflow-hidden">
-        {product.image ? (
+    <>
+      <div className="group relative bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full flex flex-col">
+        <div
+          className="relative aspect-square bg-gray-50 cursor-pointer flex-grow"
+          onClick={() => setShowModal(true)}
+        >
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
           />
-        ) : (
-          <div className="text-gray-400">Product Image</div>
-        )}
-      </div>
-      <div className="p-4">
-        <h3 className="font-medium text-gray-900">{product.name}</h3>
-        <p className="mt-1 text-gray-900 font-semibold">
-          ${product.price.toFixed(2)}
-        </p>
-        {product.sizes && (
-          <p className="text-xs text-gray-500 mt-1">
-            Sizes: {product.sizes.join(", ")}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              addToWishlist(product);
+            }}
+            className="absolute top-4 right-4 p-2.5 bg-white/90 backdrop-blur-sm rounded-full shadow-md hover:bg-white transition-all duration-300 hover:scale-110"
+            aria-label="Add to wishlist"
+          >
+            <FontAwesomeIcon
+              icon={faHeart}
+              className={`text-sm ${
+                isWishlisted ? "text-red-500" : "text-gray-600"
+              }`}
+            />
+          </button>
+        </div>
+
+        <div className="p-5 space-y-2 flex flex-col flex-grow-0">
+          <h3
+            className="font-semibold text-gray-900 text-lg leading-tight cursor-pointer hover:text-gray-600 transition-colors"
+            onClick={() => setShowModal(true)}
+          >
+            {product.name}
+          </h3>
+
+          <div className="flex items-center">
+            <div className="flex mr-1">{renderStars(product.rating)}</div>
+            <span className="text-gray-500 text-xs ml-1">{product.rating}</span>
+          </div>
+
+          <p className="text-gray-700 font-bold text-xl mt-1">
+            ${product.price.toFixed(2)}
           </p>
-        )}
-        {product.colors && (
-          <p className="text-xs text-gray-500 mt-1">
-            Colors: {product.colors.join(", ")}
-          </p>
-        )}
-        <a
-          href={whatsappLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-3 w-full inline-block text-center bg-green-500 text-white py-2 rounded hover:bg-green-600 transition-colors duration-200 text-sm font-medium"
-        >
-          Order on WhatsApp
-        </a>
+
+          <button
+            onClick={() => setShowModal(true)}
+            className="w-full mt-3 bg-gradient-to-br from-gray-900 to-gray-800 text-white py-3 rounded-lg hover:opacity-90 transition-all duration-300 text-sm font-semibold tracking-wide shadow-md"
+          >
+            View Details
+          </button>
+        </div>
       </div>
-    </div>
+
+      {showModal && (
+        <ProductModal
+          product={product}
+          onClose={() => setShowModal(false)}
+          addToWishlist={addToWishlist}
+          isWishlisted={isWishlisted}
+        />
+      )}
+    </>
   );
 };
 

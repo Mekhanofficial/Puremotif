@@ -8,11 +8,11 @@ import "slick-carousel/slick/slick-theme.css";
 
 // Page imports
 import HomePage from "./pages/Home";
-import ShopPage from "./pages/Shop";
 // import AboutPage from "./pages/About";
 // import ContactPage from "./pages/Contact";
 import WishlistPage from "./pages/Wishlist";
 import Layout from "./components/Layout";
+import ShopPage from "./pages/Shop";
 // import { AllProducts } from "./components/Product";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
