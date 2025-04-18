@@ -485,13 +485,14 @@ const getEnhancedCategoryProducts = (products) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isMobileSidebarOpen]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+
+useEffect(() => {
+  const handleScroll = () => {
+    setIsScrolled(window.scrollY > 50);
+  };
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
 
   // Helper functions
   const toggleDropdown = (dropdown) => {
@@ -594,7 +595,7 @@ const getEnhancedCategoryProducts = (products) => {
 
       <button
         onClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
-        className={`mobile-sidebar-toggle md:hidden fixed top-20 z-[1000] left-4 bg-gray-900 text-white p-3 rounded-lg shadow-lg transition-all duration-300 ${
+        className={`mobile-sidebar-toggle md:hidden fixed top-20 z-[1000] left-4 bg-red-500 text-white p-3 rounded-lg shadow-lg transition-all duration-300 ${
           isScrolled ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
         }`}
       >
