@@ -75,7 +75,7 @@ const ProductCard = ({ product, addToWishlist, isWishlisted }) => {
             onClick={() => setShowModal(true)}
             className="w-full mt-3 bg-gradient-to-br from-gray-900 to-gray-800 text-white py-3 rounded-lg hover:opacity-90 transition-all duration-300 text-sm font-semibold tracking-wide shadow-md"
           >
-            View Detailsss
+            Buy Now
 
           </button>
         </div>

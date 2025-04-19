@@ -12,8 +12,7 @@ import HomePage from "./pages/Home";
 // import ContactPage from "./pages/Contact";
 import WishlistPage from "./pages/Wishlist";
 import Layout from "./components/Layout";
-// import ShopPage from "./pages/Shop";
-// import { AllProducts } from "./components/Product";
+import ShopPage from "./pages/Shop";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -25,10 +24,10 @@ const router = createBrowserRouter([
         path: "/",
         element: <HomePage />,
       },
-      // {
-      //   path: "/shop",
-      //   element: <ShopPage />,
-      // },
+      {
+        path: "/shop",
+        element: <ShopPage />,
+      },
       {
         path: "/wishlist",
         element: <WishlistPage />,
