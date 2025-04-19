@@ -31,7 +31,7 @@ export default function HeaderPage() {
   const links = [
     { name: "Home", href: "/", icon: faHome },
     { name: "Shop", href: "/shop", icon: faStore },
-    { name: "About", href: "/about", icon: faInfoCircle },
+    { name: "Abogggut", href: "/about", icon: faInfoCircle },
     { name: "Contact", href: "/contact", icon: faPhone },
   ];
 
