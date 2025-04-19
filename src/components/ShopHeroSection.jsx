@@ -8,7 +8,7 @@ import {
   faTimes,
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
-import ShopSidebar from "./ShopSidebar";
+import ShopSidebar from "./ShopSideBar";
 import ProductCard from "./ProductCard";
 import Pagination from "./Pagination";
 import {
