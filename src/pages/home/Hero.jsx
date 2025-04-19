@@ -1276,10 +1276,10 @@ const HomeHeroSection = () => {
         <div className="max-w-7xl mx-auto px-5 py-12 font-sans">
           <div className="flex items-center justify-between border-b border-gray-200 pb-6 mb-8">
             <div>
-              <h1 className="text-center text-5xl font-semibold bg-gradient-to-r from-teal-900 via-purple-500 to-gray-900 text-transparent bg-clip-text animate-gradient bg-300% hover:animate-pulse">
+              <h1 className="text-center text-5xl font-semibold bg-gradient-to-r from-teal-900 via-teal-500 to-gray-900 text-transparent bg-clip-text animate-gradient bg-300% hover:animate-pulse">
                 New Arrival
               </h1>
-              <p className="text-center text-md font-semibold bg-gradient-to-r from-teal-900 via-purple-500 to-gray-900 text-transparent bg-clip-text animate-gradient bg-300% hover:animate-pulse">
+              <p className="text-center text-md font-semibold bg-gradient-to-r from-teal-900 via-teal-500 to-gray-900 text-transparent bg-clip-text animate-gradient bg-300% hover:animate-pulse">
                 Discover the latest arrivals.
               </p>
             </div>
@@ -1529,7 +1529,7 @@ const HomeHeroSection = () => {
         >
           {/* Heading */}
           <motion.h1
-            className="m-10 text-center text-3xl font-semibold bg-gradient-to-r from-teal-900 via-purple-500 to-gray-900 text-transparent bg-clip-text animate-gradient bg-300% hover:animate-pulse"
+            className="m-10 text-center text-3xl font-semibold bg-gradient-to-r from-teal-900 via-teal-500 to-gray-900 text-transparent bg-clip-text animate-gradient bg-300% hover:animate-pulse"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}

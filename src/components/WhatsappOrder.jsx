@@ -16,9 +16,7 @@ const WhatsAppOrderModal = ({ product, onClose }) => {
 
   const whatsappMessage = `Hi, I'd like to order the following product:\n\n*${
     product.name
-  }*\nPrice: $${product.price.toFixed(2)}\n\nProduct URL: ${
-    window.location.origin
-  }/product/${product.id}`;
+  }*\nPrice: $${product.price.toFixed(2)}`;
   const encodedMessage = encodeURIComponent(whatsappMessage);
   const whatsappUrl = `https://wa.me/2348163131065?text=${encodedMessage}`;
 

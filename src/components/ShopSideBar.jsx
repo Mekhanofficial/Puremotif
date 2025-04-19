@@ -80,7 +80,7 @@ const ShopSidebar = ({
       style={{ maxHeight: "100vh" }}
     >
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-xl font-bold text-white font-serif">PureMotif</h2>
+        <h2 className="text-xl font-bold text-white font-serif">Pure Motif</h2>
         <div className="flex items-center gap-3">
           <button
             className="text-gray-300 hover:text-white text-xs font-medium flex items-center gap-2 transition-colors duration-300"

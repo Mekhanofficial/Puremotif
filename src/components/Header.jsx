@@ -11,6 +11,7 @@ import {
   faStore,
   faInfoCircle,
   faPhone,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import logo from "../pictures/hue/logo.jpg";
 import { useAppContext } from "../AppContext";
@@ -31,7 +32,7 @@ export default function HeaderPage() {
   const links = [
     { name: "Home", href: "/", icon: faHome },
     { name: "Shop", href: "/shop", icon: faStore },
-    { name: "Abogggut", href: "/about", icon: faInfoCircle },
+    { name: "About", href: "/about", icon: faInfoCircle },
     { name: "Contact", href: "/contact", icon: faPhone },
   ];
 
@@ -40,7 +41,11 @@ export default function HeaderPage() {
     setIsSearchFocused(false);
   };
 
-  const closeAllPanels = () => {
+  const closeAllPanels = (e) => {
+    // Prevent event bubbling when clicking the close button
+    if (e && e.target.closest(".sidebar-content")) {
+      return;
+    }
     setIsSidebarOpen(false);
     setIsSearchFocused(false);
   };
@@ -118,7 +123,7 @@ export default function HeaderPage() {
           >
             <img
               src={logo}
-              alt="PureMotif logo"
+              alt="Pure Motif logo"
               className="h-10 w-auto rounded"
             />
             <span
@@ -126,7 +131,7 @@ export default function HeaderPage() {
                 isHomepage && !isScrolled ? "text-white" : "text-gray-900"
               }`}
             >
-              PureMotif
+              Pure Motif
             </span>
           </Link>
 
@@ -140,13 +145,13 @@ export default function HeaderPage() {
                   isHomepage && !isScrolled ? "text-white" : "text-gray-900"
                 } ${
                   location.pathname === link.href
-                    ? "text-purple-500 font-semibold" // Changed active color to purple
+                    ? "text-teal-500 font-semibold"
                     : "hover:text-emerald-500"
                 }`}
               >
                 {link.name}
                 {location.pathname === link.href && (
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-purple-500 rounded-full"></span>
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-teal-500 rounded-full"></span>
                 )}
               </Link>
             ))}
@@ -226,7 +231,7 @@ export default function HeaderPage() {
               }`}
             >
               <FontAwesomeIcon
-                icon={isSidebarOpen ? faTimes : faBars}
+                icon={faBars}
                 className={`text-xl ${
                   isHomepage && !isScrolled ? "text-white" : "text-gray-700"
                 }`}
@@ -236,146 +241,163 @@ export default function HeaderPage() {
         </div>
       </header>
 
-      {/* Mobile Sidebar */}
-      {isSidebarOpen && (
-        <div className="fixed inset-0 z-40 md:hidden">
-          <div
-            className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm"
-            onClick={closeAllPanels}
+     {/* Mobile Sidebar */}
+<div className={`fixed inset-0 z-40 md:hidden transition-opacity duration-300 ${isSidebarOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+  {/* Overlay with fade effect */}
+  <div
+    className={`fixed inset-0 bg-black transition-opacity duration-300 ${
+      isSidebarOpen ? 'opacity-50' : 'opacity-0'
+    }`}
+    onClick={closeAllPanels}
+  />
+
+  {/* Sidebar with slide-in effect */}
+  <aside
+    ref={sidebarRef}
+    className={`fixed inset-y-0 left-0 w-80 max-w-full bg-white shadow-xl z-50 overflow-y-auto transform transition-transform duration-300 ease-in-out ${
+      isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+    }`}
+  >
+    <div className="flex flex-col h-full sidebar-content">
+      {/* Sidebar Header with close button - Removed duplicate logo */}
+      <div className="flex items-center justify-end p-5 border-b border-gray-100">
+        <button
+          onClick={closeAllPanels}
+          className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+          aria-label="Close menu"
+        >
+          <FontAwesomeIcon
+            icon={faTimes}
+            className="h-5 w-5 text-gray-500"
           />
+        </button>
+      </div>
 
-          <aside
-            ref={sidebarRef}
-            className="fixed inset-y-0 left-0 w-96 max-w-xs  bg-white shadow-xl z-100 overflow-y-auto transform transition-transform duration-300 ease-in-out"
-          >
-            <div className="flex flex-col h-full">
-              {/* Sidebar Header */}
-              <div className="flex items-center justify-between p-4 border-b">
-                {/* <Link
-                  to="/"
-                  className="flex items-center space-x-2"
-                  onClick={closeAllPanels}
-                >
-                  <img
-                    src={logo}
-                    alt="PureMotif logo"
-                    className="h-10 w-auto rounded"
-                  />
-                  <span className="text-xl font-bold text-gray-900">
-                    PureMotif
-                  </span>
-                </Link> */}
-
-                
-                <button
-                  onClick={closeAllPanels}
-                  className="p-2 rounded-full hover:bg-gray-100"
-                >
-                  <FontAwesomeIcon
-                    icon={faTimes}
-                    className="h-5 w-5 text-gray-500"
-                  />
-                </button>
-              </div>
-
-              {/* Sidebar Content */}
-              <div className="flex-1 p-4 overflow-y-auto">
-                {/* Search */}
-                <div className="mb-6">
-                  <form onSubmit={handleSearch} className="relative">
-                    <input
-                      type="text"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder="Search products..."
-                      className="w-full py-3 pl-10 pr-4 border border-gray-200 rounded-lg text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-                    />
-                    <FontAwesomeIcon
-                      icon={faSearch}
-                      className="absolute left-3 top-3.5 text-gray-400 text-sm"
-                    />
-                  </form>
-                </div>
-
-                {/* Navigation Links */}
-                <nav className="space-y-2">
-                  {links.map((link) => (
-                    <Link
-                      key={link.name}
-                      to={link.href}
-                      onClick={closeAllPanels}
-                      className={`flex items-center px-4 py-3 rounded-lg transition-colors ${
-                        location.pathname === link.href
-                          ? "bg-purple-100 text-purple-700" // Changed active background to purple
-                          : "hover:bg-gray-100 text-gray-700"
-                      }`}
-                    >
-                      <FontAwesomeIcon
-                        icon={link.icon}
-                        className={`mr-3 ${
-                          location.pathname === link.href
-                            ? "text-purple-500" // Changed icon color to match
-                            : "text-gray-500"
-                        }`}
-                      />
-                      <span className="font-medium">{link.name}</span>
-                    </Link>
-                  ))}
-                </nav>
-
-                {/* Account Links */}
-                <div className="mt-8 pt-6 border-t border-gray-200">
-                  <Link
-                    to="/account"
-                    onClick={closeAllPanels}
-                    className={`flex items-center px-4 py-3 rounded-lg transition-colors ${
-                      location.pathname === "/account"
-                        ? "bg-purple-100 text-purple-700"
-                        : "hover:bg-gray-100 text-gray-700"
-                    }`}
-                  >
-                    <FontAwesomeIcon
-                      icon={faUserAlt}
-                      className={`mr-3 ${
-                        location.pathname === "/account"
-                          ? "text-purple-500"
-                          : "text-gray-500"
-                      }`}
-                    />
-                    <span className="font-medium">My Account</span>
-                  </Link>
-                  <Link
-                    to="/wishlist"
-                    onClick={closeAllPanels}
-                    className={`flex items-center justify-between px-4 py-3 rounded-lg transition-colors ${
-                      location.pathname === "/wishlist"
-                        ? "bg-purple-100 text-purple-700"
-                        : "hover:bg-gray-100 text-gray-700"
-                    }`}
-                  >
-                    <div className="flex items-center">
-                      <FontAwesomeIcon
-                        icon={faHeart}
-                        className={`mr-3 ${
-                          location.pathname === "/wishlist"
-                            ? "text-purple-500"
-                            : "text-gray-500"
-                        }`}
-                      />
-                      <span className="font-medium">Wishlist</span>
-                    </div>
-                    {wishlist.length > 0 && (
-                      <span className="bg-red-500 text-white text-xs rounded-full px-2 py-1">
-                        {wishlist.length}
-                      </span>
-                    )}
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </aside>
+      {/* Rest of the sidebar content remains the same */}
+      <div className="flex-1 p-5 overflow-y-auto">
+        {/* Search with modern design */}
+        <div className="mb-6">
+          <form onSubmit={handleSearch} className="relative">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search products..."
+              className="w-full py-3 pl-10 pr-4 border border-gray-200 rounded-lg text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+            />
+            <FontAwesomeIcon
+              icon={faSearch}
+              className="absolute left-3 top-3.5 text-gray-400 text-sm"
+            />
+          </form>
         </div>
-      )}
-    </>
+
+        {/* Navigation Links with improved design */}
+        <nav className="space-y-1">
+          {links.map((link) => (
+            <Link
+              key={link.name}
+              to={link.href}
+              onClick={closeAllPanels}
+              className={`flex items-center justify-between px-4 py-3 rounded-lg transition-colors ${
+                location.pathname === link.href
+                  ? "bg-purple-50 text-purple-700"
+                  : "hover:bg-gray-50 text-gray-700"
+              }`}
+            >
+              <div className="flex items-center">
+                <FontAwesomeIcon
+                  icon={link.icon}
+                  className={`mr-3 text-lg ${
+                    location.pathname === link.href
+                      ? "text-purple-500"
+                      : "text-gray-500"
+                  }`}
+                />
+                <span className="font-medium">{link.name}</span>
+              </div>
+              <FontAwesomeIcon
+                icon={faChevronRight}
+                className="text-gray-400 text-xs"
+              />
+            </Link>
+          ))}
+        </nav>
+
+        {/* Account Links with better spacing */}
+        <div className="mt-8 pt-6 border-t border-gray-100">
+          <h3 className="px-4 mb-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+            Account
+          </h3>
+          <Link
+            to="/account"
+            onClick={closeAllPanels}
+            className={`flex items-center justify-between px-4 py-3 rounded-lg transition-colors ${
+              location.pathname === "/account"
+                ? "bg-purple-50 text-purple-700"
+                : "hover:bg-gray-50 text-gray-700"
+            }`}
+          >
+            <div className="flex items-center">
+              <FontAwesomeIcon
+                icon={faUserAlt}
+                className={`mr-3 text-lg ${
+                  location.pathname === "/account"
+                    ? "text-purple-500"
+                    : "text-gray-500"
+                }`}
+              />
+              <span className="font-medium">My Account</span>
+            </div>
+            <FontAwesomeIcon
+              icon={faChevronRight}
+              className="text-gray-400 text-xs"
+            />
+          </Link>
+          <Link
+            to="/wishlist"
+            onClick={closeAllPanels}
+            className={`flex items-center justify-between px-4 py-3 rounded-lg transition-colors ${
+              location.pathname === "/wishlist"
+                ? "bg-purple-50 text-purple-700"
+                : "hover:bg-gray-50 text-gray-700"
+            }`}
+          >
+            <div className="flex items-center">
+              <FontAwesomeIcon
+                icon={faHeart}
+                className={`mr-3 text-lg ${
+                  location.pathname === "/wishlist"
+                    ? "text-purple-500"
+                    : "text-gray-500"
+                }`}
+              />
+              <span className="font-medium">Wishlist</span>
+            </div>
+            <div className="flex items-center">
+              {wishlist.length > 0 && (
+                <span className="bg-red-500 text-white text-xs rounded-full px-2 py-1 mr-2">
+                  {wishlist.length}
+                </span>
+              )}
+              <FontAwesomeIcon
+                icon={faChevronRight}
+                className="text-gray-400 text-xs"
+              />
+            </div>
+          </Link>
+        </div>
+      </div>
+
+      {/* Sidebar Footer (optional) */}
+      <div className="p-5 border-t border-gray-100">
+        <p className="text-xs text-gray-500 text-center">
+          © {new Date().getFullYear()} PureMotif. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </aside>
+</div>
+</>
   );
 }

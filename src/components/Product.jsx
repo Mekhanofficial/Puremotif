@@ -97,22 +97,22 @@ import pd37 from "../pictures/hue/pd37.jpg";
 import pd35 from "../pictures/hue/pd35.avif";
 import pd36 from "../pictures/hue/pd36.avif";
 
-// import ex94 from "../pictures/hue/ex94.avif";
-// import ex95 from "../pictures/hue/ex95.avif";
-// import ex96 from "../pictures/hue/ex96.avif";
-// import ex97 from "../pictures/hue/ex97.avif";
-// import ex98 from "../pictures/hue/ex98.avif";
-// import ex99 from "../pictures/hue/ex99.avif";
-// import ex100 from "../pictures/hue/ex100.jpg";
-// import ex101 from "../pictures/hue/ex101.avif";
-// import ex102 from "../pictures/hue/ex102.avif";
-// import ex103 from "../pictures/hue/ex103.avif";
-// import ex104 from "../pictures/hue/ex104.jpg";
-// import ex105 from "../pictures/hue/ex105.avif";
-// import ex106 from "../pictures/hue/ex106.jpg";
-// import ex107 from "../pictures/hue/ex107.avif";
-// import ex108 from "../pictures/hue/ex108.jpg";
-// import ex109 from "../pictures/hue/ex109.avif";
+import ex94 from "../pictures/hue/ex94.jpg";
+import ex95 from "../pictures/hue/ex95.jpg";
+import ex96 from "../pictures/hue/ex96.jpg";
+import ex97 from "../pictures/hue/ex97.webp";
+import ex98 from "../pictures/hue/ex98.webp";
+import ex99 from "../pictures/hue/ex99.jpg";
+import ex100 from "../pictures/hue/ex100.webp";
+import ex101 from "../pictures/hue/ex101.jpg";
+import ex102 from "../pictures/hue/ex102.webp";
+import ex103 from "../pictures/hue/ex103.jpg";
+import ex104 from "../pictures/hue/ex104.jpg";
+import ex105 from "../pictures/hue/ex105.webp";
+import ex106 from "../pictures/hue/ex106.webp";
+import ex107 from "../pictures/hue/ex107.jpg";
+import ex108 from "../pictures/hue/ex108.jpg";
+import ex109 from "../pictures/hue/ex109.jpg";
 // import ex110 from "../pictures/hue/ex110.avif";
 // import ex111 from "../pictures/hue/ex111.avif";
 
@@ -121,7 +121,7 @@ export const allProducts = [
   // Men's Accessories - Belts
   {
     id: 1,
-    name: "Classiccc Leather Belt",
+    name: "Classic Leather Belt",
     price: 49.99,
     category: "Men",
     subcategory: "Accessories",
@@ -153,7 +153,7 @@ export const allProducts = [
     subcategory: "Accessories",
     type: "Belts",
     collection: "Winter 23",
-    // image: ex2,
+    image: ex94,
     inStock: true,
     colors: ["Black/Brown", "Tan/Black"],
     sizes: ["S", "M", "L", "XL"],
@@ -166,12 +166,11 @@ export const allProducts = [
     subcategory: "Accessories",
     type: "Belts",
     collection: "Summer 24",
-    // image: ex3,
+    image: ex95,
     inStock: true,
     colors: ["Brown", "Navy"],
     sizes: ["S", "M", "L"],
   },
-
   // Men's Accessories - Gifts for him
   {
     id: 5,
@@ -192,7 +191,7 @@ export const allProducts = [
     subcategory: "Accessories",
     type: "Gifts for him",
     collection: "Ready to wear",
-    // image: ex6,
+    image: ex96,
     inStock: true,
   },
   {
@@ -214,30 +213,30 @@ export const allProducts = [
     subcategory: "Accessories",
     type: "Gifts for him",
     collection: "Ready to wear",
-    // image: ex5,
+    image: ex97,
     inStock: true,
     colors: ["Black", "Brown"],
   },
   {
     id: 9,
-    name: "Leather Wallet Set",
-    price: 79.99,
+    name: "Classic Card Holder",
+    price: 59.99,
     category: "Men",
     subcategory: "Accessories",
     type: "Gifts for him",
     collection: "Ready to wear",
-    // image: ex100,
+    image: ex106,
     inStock: true,
   },
   {
     id: 10,
-    name: "Leather Wallet Set",
-    price: 79.99,
+    name: "Slim RFID Wallet",
+    price: 89.99,
     category: "Men",
     subcategory: "Accessories",
     type: "Gifts for him",
     collection: "Ready to wear",
-    // image: ex104,
+    image: ex107,
     inStock: true,
   },
 
@@ -250,7 +249,7 @@ export const allProducts = [
     subcategory: "Accessories",
     type: "Jewelry",
     collection: "Pre Fall 23",
-    // image: ex5,
+    image: ex6,
     inStock: true,
   },
   {
@@ -261,7 +260,7 @@ export const allProducts = [
     subcategory: "Accessories",
     type: "Jewelry",
     collection: "Pre Fall 23",
-    // image: ex8,
+    image: ex98,
     inStock: true,
   },
   {
@@ -272,7 +271,7 @@ export const allProducts = [
     subcategory: "Accessories",
     type: "Jewelry",
     collection: "Pre Fall 23",
-    // image: ex9,
+    image: ex99,
     inStock: true,
   },
   {
@@ -283,30 +282,29 @@ export const allProducts = [
     subcategory: "Accessories",
     type: "Jewelry",
     collection: "Minimalism and fantasy",
-    // image: ex10,
+    image: ex100,
     inStock: true,
   },
-
   {
     id: 15,
-    name: "Silver Cufflinks",
-    price: 89.99,
+    name: "Gold-Tone Tie Clip",
+    price: 69.99,
     category: "Men",
     subcategory: "Accessories",
     type: "Jewelry",
     collection: "Pre Fall 23",
-    // image: ex6,
+    image: ex108,
     inStock: true,
   },
   {
     id: 16,
-    name: "Silver Cufflinks",
-    price: 89.99,
+    name: "Matte Black Ring",
+    price: 99.99,
     category: "Men",
     subcategory: "Accessories",
     type: "Jewelry",
     collection: "Pre Fall 23",
-    // image: ex7,
+    image: ex109,
     inStock: true,
   },
 
@@ -343,7 +341,7 @@ export const allProducts = [
     subcategory: "Accessories",
     type: "Ties",
     collection: "Winter 23",
-    // image: ex12,
+    image: ex101,
     inStock: true,
   },
   {
@@ -549,7 +547,7 @@ export const allProducts = [
     subcategory: "Clothing",
     type: "Pants",
     collection: "Summer 24",
-    // image: ex36,
+    image: ex102,
     inStock: true,
     sizes: ["30", "32", "34", "36"],
   },
@@ -749,7 +747,7 @@ export const allProducts = [
     price: 649.99,
     category: "Men",
     subcategory: "Clothing",
-    type: "Tuxedos", 
+    type: "Tuxedos",
     collection: "Winter 23",
     image: pd37,
     inStock: true,
@@ -761,7 +759,7 @@ export const allProducts = [
     price: 699.99,
     category: "Men",
     subcategory: "Clothing",
-    type: "Tuxedos", 
+    type: "Tuxedos",
     collection: "Winter 23",
     image: pd36,
     inStock: true,
@@ -1257,7 +1255,7 @@ export const allProducts = [
     subcategory: "Clothing",
     type: "Knitwear",
     collection: "Winter 23",
-    // image: ex76,
+    image: ex103,
     inStock: true,
     sizes: ["S", "M", "L"],
   },
@@ -1483,7 +1481,7 @@ export const allProducts = [
     subcategory: "Clothing",
     type: "Suits",
     collection: "Winter 23",
-    // image: ex93,
+    image: ex104,
     inStock: true,
     sizes: ["XS", "S", "M", "L"],
   },
@@ -1495,7 +1493,7 @@ export const allProducts = [
     subcategory: "Clothing",
     type: "Suits",
     collection: "Winter 23",
-    // image: ex94,
+    image: ex105,
     inStock: true,
     sizes: ["XS", "S", "M"],
   },

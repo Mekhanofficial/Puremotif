@@ -162,9 +162,11 @@ export default function FooterPage() {
         viewport={{ once: true }}
       >
         &copy; 2025{" "}
-        <span className="text-teal-700 font-bold">PureMotif Fashion</span> |
+        <span className="text-teal-700 font-bold">Pure Motif Fashion</span> |
         Powered by{" "}
-        <span className="text-teal-500 hover:underline">PureMotif Fashion</span>
+        <span className="text-teal-500 hover:underline">
+          Pure Motif Fashion
+        </span>
       </motion.h3>
     </motion.footer>
   );
