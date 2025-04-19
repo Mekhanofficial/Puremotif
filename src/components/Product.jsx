@@ -121,7 +121,7 @@ export const allProducts = [
   // Men's Accessories - Belts
   {
     id: 1,
-    name: "Classic Leather Belt",
+    name: "Classiccc Leather Belt",
     price: 49.99,
     category: "Men",
     subcategory: "Accessories",
