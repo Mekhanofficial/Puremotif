@@ -748,69 +748,85 @@ const HomeHeroSection = () => {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          {/* Category Navigation */}
           <motion.div
-            className="flex items-center border-b border-gray-200 pb-6 mb-8"
+            className="flex flex-col sm:flex-row items-start sm:items-center border-b border-gray-200 pb-6 mb-8 gap-4 sm:gap-0"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            <div className="flex space-x-1 relative">
-              {Object.keys(categories).map((category) => (
-                <button
-                  key={category}
-                  onClick={() => {
-                    setActiveCategory(category);
-                    setCategoryCarouselIndex(0);
-                  }}
-                  className={`text-lg px-4 py-2 relative transition-all ${
-                    activeCategory === category
-                      ? "text-black font-medium"
-                      : "text-gray-600 hover:text-gray-800"
-                  }`}
-                >
-                  {category}
-                  {activeCategory === category && (
-                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-black -mb-6"></div>
-                  )}
-                </button>
-              ))}
+            {/* Category Buttons - now with proper alignment and no scrollbar */}
+            <div className="w-full relative">
+              <div className="flex space-x-1 overflow-x-auto pb-4 -mb-4 scrollbar-hide">
+                <div className="flex space-x-1 relative">
+                  {Object.keys(categories).map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => {
+                        setActiveCategory(category);
+                        setCategoryCarouselIndex(0);
+                      }}
+                      className={`text-lg px-4 py-2 relative transition-all whitespace-nowrap ${
+                        activeCategory === category
+                          ? "text-black font-medium"
+                          : "text-gray-600 hover:text-gray-800"
+                      }`}
+                    >
+                      {category}
+                      {activeCategory === category && (
+                        <motion.div
+                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-black"
+                          layoutId="activeCategoryUnderline"
+                          transition={{
+                            type: "spring",
+                            bounce: 0.2,
+                            duration: 0.6,
+                          }}
+                        />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
 
-            <div className="ml-auto flex items-center space-x-4">
-              <button
-                onClick={prevCategorySlide}
-                className="p-2 rounded-full hover:bg-gray-100 transition-colors"
-                disabled={categoryCarouselIndex === 0}
-              >
-                <FontAwesomeIcon
-                  icon={faChevronLeft}
-                  className={`w-4 h-4 ${
-                    categoryCarouselIndex === 0
-                      ? "text-gray-300"
-                      : "text-gray-600"
-                  }`}
-                />
-              </button>
-              <button
-                onClick={nextCategorySlide}
-                className="p-2 rounded-full hover:bg-gray-100 transition-colors"
-                disabled={
-                  categoryCarouselIndex >= categories[activeCategory].length - 4
-                }
-              >
-                <FontAwesomeIcon
-                  icon={faChevronRight}
-                  className={`w-4 h-4 ${
+            {/* Navigation Controls */}
+            <div className="flex items-center space-x-4 ml-0 sm:ml-auto w-full sm:w-auto justify-between sm:justify-normal">
+              <div className="flex space-x-4">
+                <button
+                  onClick={prevCategorySlide}
+                  className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+                  disabled={categoryCarouselIndex === 0}
+                >
+                  <FontAwesomeIcon
+                    icon={faChevronLeft}
+                    className={`w-4 h-4 ${
+                      categoryCarouselIndex === 0
+                        ? "text-gray-300"
+                        : "text-gray-600"
+                    }`}
+                  />
+                </button>
+                <button
+                  onClick={nextCategorySlide}
+                  className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+                  disabled={
                     categoryCarouselIndex >=
                     categories[activeCategory].length - 4
-                      ? "text-gray-300"
-                      : "text-gray-600"
-                  }`}
-                />
-              </button>
-              <button className="text-sm font-medium text-gray-600 hover:text-black px-4 py-2 rounded-md hover:bg-gray-100 transition-all">
+                  }
+                >
+                  <FontAwesomeIcon
+                    icon={faChevronRight}
+                    className={`w-4 h-4 ${
+                      categoryCarouselIndex >=
+                      categories[activeCategory].length - 4
+                        ? "text-gray-300"
+                        : "text-gray-600"
+                    }`}
+                  />
+                </button>
+              </div>
+              <button className="text-sm font-medium text-gray-600 hover:text-black px-4 py-2 rounded-md hover:bg-gray-100 transition-all whitespace-nowrap">
                 View all
               </button>
             </div>
@@ -1273,19 +1289,22 @@ const HomeHeroSection = () => {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-5 py-12 font-sans">
-          <div className="flex items-center justify-between border-b border-gray-200 pb-6 mb-8">
-            <div>
-              <h1 className="text-center text-5xl font-semibold bg-gradient-to-r from-teal-900 via-teal-500 to-gray-900 text-transparent bg-clip-text animate-gradient bg-300% hover:animate-pulse">
-                New Arrival
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12 font-sans">
+          {/* Header Section - Improved for mobile */}
+          <div className="flex flex-col sm:flex-row items-center justify-between border-b border-gray-200 pb-6 mb-8 gap-4 sm:gap-0">
+            {/* Title Section - Centered on mobile, left-aligned on larger screens */}
+            <div className="text-center sm:text-left w-full sm:w-auto">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold bg-gradient-to-r from-teal-900 via-teal-500 to-gray-900 text-transparent bg-clip-text animate-gradient bg-300%">
+                New Arrivals
               </h1>
-              <p className="text-center text-md font-semibold bg-gradient-to-r from-teal-900 via-teal-500 to-gray-900 text-transparent bg-clip-text animate-gradient bg-300% hover:animate-pulse">
+              <p className="text-sm sm:text-md font-semibold bg-gradient-to-r from-teal-900 via-teal-500 to-gray-900 text-transparent bg-clip-text animate-gradient bg-300% mt-1">
                 Discover the latest arrivals.
               </p>
             </div>
 
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2">
+            {/* Navigation Controls - Right-aligned with better mobile spacing */}
+            <div className="flex items-center space-x-2 sm:space-x-4 w-full sm:w-auto justify-center sm:justify-end">
+              <div className="flex items-center space-x-1 sm:space-x-2">
                 <button
                   onClick={prevArrivalsSlide}
                   className="p-2 rounded-full hover:bg-gray-100 transition-colors"
@@ -1293,7 +1312,7 @@ const HomeHeroSection = () => {
                 >
                   <FontAwesomeIcon
                     icon={faChevronLeft}
-                    className={`w-4 h-4 ${
+                    className={`w-3 h-3 sm:w-4 sm:h-4 ${
                       currentArrivalsIndex === 0
                         ? "text-gray-300"
                         : "text-gray-600"
@@ -1309,7 +1328,7 @@ const HomeHeroSection = () => {
                 >
                   <FontAwesomeIcon
                     icon={faChevronRight}
-                    className={`w-4 h-4 ${
+                    className={`w-3 h-3 sm:w-4 sm:h-4 ${
                       currentArrivalsIndex >= newArrivals.length - itemsPerPage
                         ? "text-gray-300"
                         : "text-gray-600"
@@ -1317,16 +1336,19 @@ const HomeHeroSection = () => {
                   />
                 </button>
               </div>
-              <button className="flex items-center text-sm font-medium text-gray-600 hover:text-black px-4 py-2 rounded-md hover:bg-gray-100 transition-all">
+              <button className="flex items-center text-xs sm:text-sm font-medium text-gray-600 hover:text-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-md hover:bg-gray-100 transition-all">
                 View all{" "}
-                <FontAwesomeIcon icon={faArrowRight} className="ml-2 w-3 h-3" />
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  className="ml-1 sm:ml-2 w-2 h-2 sm:w-3 sm:h-3"
+                />
               </button>
             </div>
           </div>
 
-          {/* Products Grid - 12 items (1 per slide on smaller screens) */}
+          {/* Products Grid - Improved responsive columns */}
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
@@ -1335,44 +1357,45 @@ const HomeHeroSection = () => {
               <motion.div
                 key={product.id}
                 className="group relative"
-                initial={{ opacity: 0, x: -100 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
               >
                 {/* Product Image */}
-                <div className="relative overflow-hidden aspect-square mb-4 rounded-lg bg-gray-50">
+                <div className="relative overflow-hidden aspect-square mb-3 sm:mb-4 rounded-lg bg-gray-50">
                   <img
                     src={product.image}
                     alt={product.alt}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
                   />
 
                   {/* Badge */}
                   {product.badge && (
-                    <div className="absolute top-3 left-3 bg-white text-black text-xs px-2 py-1 rounded-full font-medium shadow-sm">
+                    <div className="absolute top-2 left-2 sm:top-3 sm:left-3 bg-white text-black text-xxs xs:text-xs sm:text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full font-medium shadow-sm">
                       {product.badge}
                     </div>
                   )}
 
                   {/* Sold Out Button */}
                   {product.status === "sold-out" && (
-                    <div className="absolute top-3 right-3 bg-white bg-opacity-80 text-black text-xs px-2 py-1 rounded-full font-medium">
+                    <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-white bg-opacity-80 text-black text-xxs xs:text-xs sm:text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full font-medium">
                       SOLD OUT
                     </div>
                   )}
 
-                  {/* Quick Buy Button */}
+                  {/* Quick Buy Button - Simplified for mobile */}
                   {product.status === "quick-buy" && (
-                    <div className="absolute inset-0 flex items-end justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pb-4">
-                      <div className="bg-white py-2 px-3 rounded-full shadow-md flex items-center">
-                        <select className="bg-transparent border-none text-xs focus:outline-none mr-2">
+                    <div className="absolute inset-0 flex items-end justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pb-2 sm:pb-4">
+                      <div className="bg-white py-1 px-2 sm:py-2 sm:px-3 rounded-full shadow-md flex items-center">
+                        <select className="bg-transparent border-none text-xxs xs:text-xs sm:text-xs focus:outline-none mr-1 sm:mr-2">
                           {product.sizes?.map((size) => (
                             <option key={size} value={size}>
                               {size}
                             </option>
                           ))}
                         </select>
-                        <button className="bg-black text-white text-xs px-3 py-1 rounded-full hover:bg-gray-800 transition-colors">
+                        <button className="bg-black text-white text-xxs xs:text-xs sm:text-xs px-2 sm:px-3 py-0.5 sm:py-1 rounded-full hover:bg-gray-800 transition-colors">
                           QUICK BUY
                         </button>
                       </div>
@@ -1381,29 +1404,31 @@ const HomeHeroSection = () => {
                 </div>
 
                 {/* Product Info */}
-                <div className="text-center px-2">
-                  <h2 className="text-md font-medium text-gray-900 mb-1 truncate">
+                <div className="text-center px-1 sm:px-2">
+                  <h2 className="text-xs sm:text-sm md:text-md font-medium text-gray-900 mb-0.5 sm:mb-1 truncate">
                     {product.designer}
                   </h2>
-                  <p className="text-gray-600 text-sm">{product.price}</p>
+                  <p className="text-gray-600 text-xxs xs:text-xs sm:text-sm">
+                    {product.price}
+                  </p>
                 </div>
               </motion.div>
             ))}
           </motion.div>
 
-          {/* Slide Indicators - Only show if more than 12 items */}
-          {newArrivals.length > 12 && (
-            <div className="flex justify-center mt-8 space-x-2">
+          {/* Slide Indicators - Responsive sizing */}
+          {newArrivals.length > itemsPerPage && (
+            <div className="flex justify-center mt-6 sm:mt-8 space-x-1.5 sm:space-x-2">
               {Array.from({
                 length: Math.ceil(newArrivals.length / itemsPerPage),
               }).map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentArrivalsIndex(index * itemsPerPage)}
-                  className={`w-2 h-2 rounded-full transition-all ${
+                  className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all ${
                     currentArrivalsIndex >= index * itemsPerPage &&
                     currentArrivalsIndex < (index + 1) * itemsPerPage
-                      ? "bg-black w-4"
+                      ? "bg-black w-3 sm:w-4"
                       : "bg-gray-300"
                   }`}
                 />
