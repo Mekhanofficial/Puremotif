@@ -31,6 +31,31 @@ import px22 from "../../pictures/hue/px22.avif";
 import px23 from "../../pictures/hue/px23.avif";
 import px24 from "../../pictures/hue/px24.avif";
 import px29 from "../../pictures/hue/px29.jpg";
+import ex21 from "../../pictures/hue/ex21.webp";
+import ex22 from "../../pictures/hue/ex22.jpg";
+import ex23 from "../../pictures/hue/ex23.webp";
+import ex24 from "../../pictures/hue/ex24.avif";
+import ex25 from "../../pictures/hue/ex25.avif";
+import ex26 from "../../pictures/hue/ex26.jpeg";
+import ex27 from "../../pictures/hue/ex27.jpg";
+import ex28 from "../../pictures/hue/ex28.jpg";
+import pd13 from "../../pictures/hue/pd13.jpg";
+import pd33 from "../../pictures/hue/pd36.avif";
+import pd34 from "../../pictures/hue/pd37.jpg";
+import pd35 from "../../pictures/hue/pd35.avif";
+import ex81 from "../../pictures/hue/ex81.webp";
+import ex88 from "../../pictures/hue/ex88.jpg";
+import ex90 from "../../pictures/hue/ex90.webp";
+import ex92 from "../../pictures/hue/ex92.jpg";
+import ex98 from "../../pictures/hue/ex98.webp";
+import ex100 from "../../pictures/hue/ex100.webp";
+import ex103 from "../../pictures/hue/ex103.jpg";
+import ex109 from "../../pictures/hue/ex109.jpg";
+import ex86 from "../../pictures/hue/ex86.jpg";
+// import ex28 from "../../pictures/hue/ex28.jpg";
+import ex5 from "../../pictures/hue/ex5.webp";
+import ex6 from "../../pictures/hue/ex6.jpg";
+import ex20 from "../../pictures/hue/ex20.webp";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -236,7 +261,7 @@ const HomeHeroSection = () => {
     "T-Shirts": [
       {
         id: 1,
-        image: fx1,
+        image: ex21,
         alt: "Our Legacy T-shirt",
         badge: "GOLD CUP",
         designer: "Our Legacy",
@@ -247,7 +272,7 @@ const HomeHeroSection = () => {
       },
       {
         id: 2,
-        image: fx2,
+        image: ex22,
         alt: "Charles Jeffery T-shirt",
         designer: "Charles Jeffery",
         price: "N289,000",
@@ -256,7 +281,7 @@ const HomeHeroSection = () => {
       },
       {
         id: 3,
-        image: fx3,
+        image: ex23,
         alt: "Chorles Jeffery T-shirt",
         designer: "Chorles Jeffery",
         price: "N275,000",
@@ -266,7 +291,7 @@ const HomeHeroSection = () => {
       },
       {
         id: 4,
-        image: fx4,
+        image: ex24,
         alt: "Premium Cotton T-shirt",
         badge: "LIMITED",
         designer: "Premium Cotton",
@@ -277,7 +302,7 @@ const HomeHeroSection = () => {
       },
       {
         id: 5,
-        image: fx5,
+        image: ex25,
         alt: "Classic White T-shirt",
         designer: "Classic White",
         price: "N240,000",
@@ -286,7 +311,7 @@ const HomeHeroSection = () => {
       },
       {
         id: 6,
-        image: fx6,
+        image: ex26,
         alt: "Black Edition T-shirt",
         badge: "EXCLUSIVE",
         designer: "Black Edition",
@@ -297,7 +322,7 @@ const HomeHeroSection = () => {
       },
       {
         id: 7,
-        image: px1,
+        image: ex27,
         alt: "Oversized Fit T-shirt",
         designer: "Oversized Fit",
         price: "N295,000",
@@ -307,7 +332,7 @@ const HomeHeroSection = () => {
       },
       {
         id: 8,
-        image: px2,
+        image: ex28,
         alt: "Vintage Wash T-shirt",
         designer: "Vintage Wash",
         price: "N265,000",
@@ -316,13 +341,13 @@ const HomeHeroSection = () => {
       },
     ],
 
-    Ashluxe: [
+    Suits: [
       {
         id: 1,
-        image: px3,
-        alt: "Ashluxe Graphic Tee",
+        image: fx1,
+        alt: "Suits Graphic Tee",
         badge: "EXCLUSIVE",
-        designer: "Ashluxe",
+        designer: "Suits",
         price: "N310,000",
         status: "quick-buy",
         sizes: ["S", "M", "L"],
@@ -330,19 +355,19 @@ const HomeHeroSection = () => {
       },
       {
         id: 2,
-        image: px4,
-        alt: "Ashluxe Monogram Tee",
-        designer: "Ashluxe",
+        image: fx2,
+        alt: "Suits Monogram Tee",
+        designer: "Suits",
         price: "N290,000",
         status: "sold-out",
         repeatCount: 1,
       },
       {
         id: 3,
-        image: px9,
-        alt: "Ashluxe Cityscape Tee",
+        image: fx4,
+        alt: "Suits Cityscape Tee",
         badge: "LIMITED",
-        designer: "Ashluxe",
+        designer: "Suits",
         price: "N345,000",
         status: "quick-buy",
         sizes: ["M", "L", "XL"],
@@ -350,9 +375,9 @@ const HomeHeroSection = () => {
       },
       {
         id: 4,
-        image: px10,
-        alt: "Ashluxe Flame Tee",
-        designer: "Ashluxe",
+        image: fx5,
+        alt: "Suits Flame Tee",
+        designer: "Suits",
         price: "N270,000",
         status: "quick-buy",
         sizes: ["S", "M"],
@@ -360,19 +385,19 @@ const HomeHeroSection = () => {
       },
       {
         id: 5,
-        image: px11,
-        alt: "Ashluxe Sporty Tee",
-        designer: "Ashluxe",
+        image: pd13,
+        alt: "Suits Sporty Tee",
+        designer: "Suits",
         price: "N250,000",
         status: "sold-out",
         repeatCount: 1,
       },
       {
         id: 6,
-        image: px12,
-        alt: "Ashluxe Culture Tee",
+        image: pd33,
+        alt: "Suits Culture Tee",
         badge: "GOLD CUP",
-        designer: "Ashluxe",
+        designer: "Suits",
         price: "N360,000",
         status: "quick-buy",
         sizes: ["L", "XL"],
@@ -380,9 +405,9 @@ const HomeHeroSection = () => {
       },
       {
         id: 7,
-        image: px13,
-        alt: "Ashluxe Street Art Tee",
-        designer: "Ashluxe",
+        image: pd34,
+        alt: "Suits Street Art Tee",
+        designer: "Suits",
         price: "N280,000",
         status: "quick-buy",
         sizes: ["M", "L"],
@@ -390,9 +415,9 @@ const HomeHeroSection = () => {
       },
       {
         id: 8,
-        image: px14,
-        alt: "Ashluxe Signature Tee",
-        designer: "Ashluxe",
+        image: pd35,
+        alt: "Suits Signature Tee",
+        designer: "Suits",
         price: "N320,000",
         status: "sold-out",
         repeatCount: 1,
@@ -509,7 +534,7 @@ const HomeHeroSection = () => {
   const newArrivals = [
     {
       id: 1,
-      image: px1,
+      image: ex81,
       alt: "Premium Cotton T-Shirt",
       badge: "NEW",
       designer: "Premium Cotton",
@@ -519,7 +544,7 @@ const HomeHeroSection = () => {
     },
     {
       id: 2,
-      image: px2,
+      image: ex88,
       alt: "Vintage Wash T-Shirt",
       designer: "Vintage Wash",
       price: "N265,000",
@@ -527,26 +552,26 @@ const HomeHeroSection = () => {
     },
     {
       id: 3,
-      image: px3,
-      alt: "Ashluxe Graphic Tee",
+      image: ex90,
+      alt: "Suits Graphic Tee",
       badge: "LIMITED",
-      designer: "Ashluxe",
+      designer: "Suits",
       price: "N345,000",
       status: "quick-buy",
       sizes: ["M", "L", "XL"],
     },
     {
       id: 4,
-      image: px4,
-      alt: "Ashluxe Monogram Tee",
-      designer: "Ashluxe",
+      image: ex92,
+      alt: "Suits Monogram Tee",
+      designer: "Suits",
       price: "N290,000",
       status: "quick-buy",
       sizes: ["S", "M"],
     },
     {
       id: 5,
-      image: px16,
+      image: ex98,
       alt: "Classic White T-Shirt",
       badge: "NEW",
       designer: "Classic White",
@@ -556,7 +581,7 @@ const HomeHeroSection = () => {
     },
     {
       id: 6,
-      image: px18,
+      image: ex100,
       alt: "Black Edition T-Shirt",
       badge: "EXCLUSIVE",
       designer: "Black Edition",
@@ -566,7 +591,7 @@ const HomeHeroSection = () => {
     },
     {
       id: 7,
-      image: px2,
+      image: ex103,
       alt: "Oversized Fit T-Shirt",
       designer: "Oversized Fit",
       price: "N295,000",
@@ -574,7 +599,7 @@ const HomeHeroSection = () => {
     },
     {
       id: 8,
-      image: px3,
+      image: ex109,
       alt: "Wood Wood Logo Tee",
       badge: "NEW",
       designer: "Wood Wood",
@@ -584,26 +609,26 @@ const HomeHeroSection = () => {
     },
     {
       id: 9,
-      image: px9,
-      alt: "Ashluxe Cityscape Tee",
+      image: ex86,
+      alt: "Suits Cityscape Tee",
       badge: "LIMITED",
-      designer: "Ashluxe",
+      designer: "Suits",
       price: "N345,000",
       status: "quick-buy",
       sizes: ["L", "XL"],
     },
     {
       id: 10,
-      image: px10,
-      alt: "Ashluxe Flame Tee",
-      designer: "Ashluxe",
+      image: ex5,
+      alt: "Suits Flame Tee",
+      designer: "Suits",
       price: "N270,000",
       status: "quick-buy",
       sizes: ["M", "L"],
     },
     {
       id: 11,
-      image: px11,
+      image: ex6,
       alt: "Wood Wood Bold Tee",
       badge: "EXCLUSIVE",
       designer: "Wood Wood",
@@ -613,7 +638,7 @@ const HomeHeroSection = () => {
     },
     {
       id: 12,
-      image: px12,
+      image: ex20,
       alt: "Wood Wood Grid Tee",
       designer: "Wood Wood",
       price: "N270,000",

@@ -32,8 +32,8 @@ export default function HeaderPage() {
   const links = [
     { name: "Home", href: "/", icon: faHome },
     { name: "Shop", href: "/shop", icon: faStore },
-    { name: "About", href: "/about", icon: faInfoCircle },
-    { name: "Contact", href: "/contact", icon: faPhone },
+    { name: "About", href: "", icon: faInfoCircle },
+    { name: "Contact", href: "", icon: faPhone },
   ];
 
   const toggleSidebar = () => {
@@ -185,7 +185,7 @@ export default function HeaderPage() {
 
             {/* Account & Wishlist */}
             <Link
-              to="/account"
+              to=""
               className={`hidden md:flex items-center justify-center h-10 w-10 rounded-full transition-colors ${
                 isHomepage && !isScrolled
                   ? "hover:bg-white hover:bg-opacity-20"

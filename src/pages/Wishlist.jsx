@@ -226,20 +226,13 @@ const WishlistPage = () => {
                   )}
                   <div
                     className="relative aspect-square bg-gray-100 cursor-pointer"
-                    onClick={(e) => {
-                      if (!selectMode) {
-                        e.stopPropagation();
-                        navigate(`/product/${product.id}`);
-                      }
-                    }}
+                  
                   >
                     <img
                       src={product.image}
                       alt={product.name}
                       className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.target.src = "/path-to-default-image.jpg";
-                      }}
+                  
                     />
                     {!selectMode && (
                       <button
